@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs</title>
+    <style>
+        input:invalid {
+            border:  2px dashed red;
+        }
+        input:invalid:required {
+            background-image: linear-gradient(to right,pink, lightgreen);
+        }
+
+        input:valid {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="choose">*Would you prefer a banana or cherry?</label>
+        <input id="choose" name="i-like" required pattern="[Bb]anana|[Cc]herry" />
+        <button>Submit</button>
+        <div>
+            <label for="choose">Would you prefer a banana or a cherry?</label>
+            <input type="text" id="choose" name="i-like" required minlength="6" maxlength="6">
+        </div>
+        <div>
+            <label for="number">How many would you like?</label>
+            <input type="number" name="amount" id="number" value="1" step="2" min="1" max="10">
+        </div>
+        <div>
+            <button>submit</button>
+        </div>
+      </form> 
+      <form>
+        <label for="mail">
+          I would like you to provide me with an email address:
+        </label>
+        <input type="email" id="mail" name="mail" />
+        <button>Submit</button>
+      </form>
+</body>
+<script>
+    const email = document.getElementById("mail");
+
+    email.addEventListener("input", (event => {
+        if (email.validity.typeMismatch) {
+            email.setCustomVality.typeMismatch("I am expecting an email address!");
+        } else {
+            email.setCustomValidity("");
+        }
+    }));
+</script>
+</html>
